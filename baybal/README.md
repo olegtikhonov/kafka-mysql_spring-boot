@@ -15,7 +15,7 @@ Payment
 
 Send payment request
 ```
-curl 127.0.0.1:6767/payment -X POST -H "Content-Type: application/json" -d '{"amount":70.6,"currency":"CAD","userId":"2f051590-933a-11e9-a9c3-0242ac110003","payeeId":"2f0618d3-933a-11e9-a9c3-0242ac110003","paymentMethodId":"2f08c100-933a-11e9-a9c3-0242ac110003"}'
+curl 127.0.0.1:6767/payment -X POST -H "Content-Type: application/json" -d '{"amount":70.6,"currency":"CAD","userId":"076e2da2-959a-11e9-bbd0-0242ac110003","payeeId":"0770e6ec-959a-11e9-bbd0-0242ac110003","paymentMethodId":"0774c2d0-959a-11e9-bbd0-0242ac110003"}'
 ```
 
 ```

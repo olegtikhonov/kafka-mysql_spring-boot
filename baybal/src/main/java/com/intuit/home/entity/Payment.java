@@ -53,7 +53,7 @@ public class Payment {
     @Type(type="uuid-char")
     private UUID paymentMethodId;
 
-    @Column
+    @Column(columnDefinition = "BOOLEAN")
     private Boolean succeeded;
 
 

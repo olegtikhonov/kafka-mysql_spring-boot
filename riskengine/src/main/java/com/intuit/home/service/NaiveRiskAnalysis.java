@@ -24,12 +24,17 @@ public class NaiveRiskAnalysis implements RiskAnalysis<PaymentResponse, Optional
     @Override
     public PaymentResponse performAnalysys(Optional<PaymentRequest> dataToBEAnalyzed) {
         if(dataToBEAnalyzed.isPresent()) {
+            Payment payment = RequestConverter.toPayment(dataToBEAnalyzed.get());
+            payment.setSucceeded(true);
             if((paymentRepository.count() % 7) != 0) {
                 // accepts the payments
-                Payment payment = RequestConverter.toPayment(dataToBEAnalyzed.get());
                 payment.setSucceeded(true);
-                paymentRepository.save(payment);
+
+            } else {
+                payment.setSucceeded(false);
             }
+
+            paymentRepository.save(payment);
          }
 
         return new PaymentResponse();
