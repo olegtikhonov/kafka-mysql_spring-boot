@@ -38,56 +38,63 @@ public class PaymentResponse {
         return paymentId;
     }
 
-    public void setPaymentId(Long paymentId) {
+    public PaymentResponse setPaymentId(Long paymentId) {
         this.paymentId = paymentId;
+        return this;
     }
 
     public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public PaymentResponse setAmount(Double amount) {
         this.amount = amount;
+        return this;
     }
 
     public Integer getCurrencyId() {
         return currencyId;
     }
 
-    public void setCurrencyId(Integer currencyId) {
+    public PaymentResponse setCurrencyId(Integer currencyId) {
         this.currencyId = currencyId;
+        return this;
     }
 
     public UUID getPayerId() {
         return payerId;
     }
 
-    public void setPayerId(UUID payerId) {
+    public PaymentResponse setPayerId(UUID payerId) {
         this.payerId = payerId;
+        return this;
     }
 
     public UUID getPayeeId() {
         return payeeId;
     }
 
-    public void setPayeeId(UUID payeeId) {
+    public PaymentResponse setPayeeId(UUID payeeId) {
         this.payeeId = payeeId;
+        return this;
     }
 
     public UUID getPaymentMethodId() {
         return paymentMethodId;
     }
 
-    public void setPaymentMethodId(UUID paymentMethodId) {
+    public PaymentResponse setPaymentMethodId(UUID paymentMethodId) {
         this.paymentMethodId = paymentMethodId;
+        return this;
     }
 
     public Boolean getSucceeded() {
         return succeeded;
     }
 
-    public void setSucceeded(Boolean succeeded) {
+    public PaymentResponse setSucceeded(Boolean succeeded) {
         this.succeeded = succeeded;
+        return this;
     }
 
     @Override

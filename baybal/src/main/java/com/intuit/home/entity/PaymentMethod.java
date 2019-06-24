@@ -52,9 +52,13 @@ public class PaymentMethod {
     }
 
     public String getBankAccount() {
+        if(bankAccount == null || bankAccount.isEmpty()) {
+            return "";
+        }
+
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append('(').append('*').append( bankAccount.substring(bankAccount.length() - 4)).append(')');
-        return (this.bankAccount != null && ! this.bankAccount.isEmpty()) ? stringBuffer.toString() : "";
+        return stringBuffer.toString();
     }
 
     public PaymentMethod setBankAccount(String bankAccount) {

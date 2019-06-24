@@ -1,8 +1,8 @@
 package com.intuit.home.service;
 
+import com.intuit.home.common.RequestConverter;
 import com.intuit.home.config.CommonPropertiesBean;
 import com.intuit.home.request.PaymentRequest;
-import com.intuit.home.util.RequestConverter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

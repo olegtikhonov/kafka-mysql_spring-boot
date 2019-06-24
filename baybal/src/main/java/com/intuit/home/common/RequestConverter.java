@@ -17,6 +17,7 @@ public final class RequestConverter {
     private final static ObjectMapper objectMapper = new ObjectMapper();
     private final static Logger logger = LogManager.getLogger(RequestConverter.class);
 
+    private RequestConverter() {}
 
     /**
      * Converts an {@link Object} to JSON as String

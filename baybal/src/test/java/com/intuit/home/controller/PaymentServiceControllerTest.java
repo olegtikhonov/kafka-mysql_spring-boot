@@ -1,6 +1,5 @@
 package com.intuit.home.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.intuit.home.money.Moneta;
 import com.intuit.home.request.PaymentRequest;
 import org.junit.Before;
@@ -8,16 +7,20 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.UUID;
 
 import static com.intuit.home.TestConstants.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+
+@TestPropertySource("classpath:test.properties")
 public class PaymentServiceControllerTest extends AbstractTest {
+
     @Override
     @Before
     public void setUp() {
@@ -25,15 +28,14 @@ public class PaymentServiceControllerTest extends AbstractTest {
     }
 
 
-    @Ignore
     @Test
     public void getPaymentMethodByUserID() throws Exception {
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(GET_PAYMENT_METHODS).accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(String.format(GET_PAYMENT_METHODS, UUID.randomUUID().toString())).accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 
         int status = mvcResult.getResponse().getStatus();
         assertEquals(HttpStatus.OK.value(), status);
         String content = mvcResult.getResponse().getContentAsString();
-        assertTrue(content.toLowerCase().contains("going"));
+        assertTrue(content.toLowerCase().contains("[]"));
     }
 
     @Test
@@ -48,14 +50,13 @@ public class PaymentServiceControllerTest extends AbstractTest {
     }
 
 
-    @Ignore
     @Test
     public void getPayees() throws Exception {
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(GET_PAYEES).accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
         int status = mvcResult.getResponse().getStatus();
         assertEquals(HttpStatus.OK.value(), status);
         String content = mvcResult.getResponse().getContentAsString();
-        assertTrue(content.toLowerCase().contains("list of payees"));
+        assertTrue(content.toLowerCase().contains("[]"));
     }
 
 

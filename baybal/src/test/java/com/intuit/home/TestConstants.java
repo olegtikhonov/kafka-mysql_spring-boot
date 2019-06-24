@@ -7,7 +7,7 @@ public final class TestConstants {
     public static final Integer PARTITION_NUMBER = 1;
     public static final Short REPLICATION_FACTOR = 3;
 
-    public static final String GET_PAYMENT_METHODS = "/payment/method/userID";
+    public static final String GET_PAYMENT_METHODS = "/payment/method/%s";
     public static final String MAKE_PAYMENT = "/payment";
     public static final String GET_PAYEES = "/payee";
 }
