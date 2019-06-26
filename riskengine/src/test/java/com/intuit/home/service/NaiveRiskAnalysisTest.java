@@ -1,5 +1,6 @@
 package com.intuit.home.service;
 
+import com.intuit.home.money.Moneta;
 import com.intuit.home.repository.PaymentRepository;
 import com.intuit.home.request.PaymentRequest;
 import com.intuit.home.response.PaymentResponse;
@@ -16,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.lang.reflect.Field;
 import java.util.Optional;
+import java.util.UUID;
 
 import static org.junit.Assert.*;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.AUTO_CONFIGURED;
@@ -26,8 +28,8 @@ import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTest
 @AutoConfigureTestDatabase(replace = AUTO_CONFIGURED)
 public class NaiveRiskAnalysisTest {
     private NaiveRiskAnalysis naiveRiskAnalysis;
-    @Mock private PaymentRequest paymentRequest;
-    @Autowired PaymentRepository paymentRepository;
+    private PaymentRequest paymentRequest;
+    @Autowired private PaymentRepository paymentRepository;
 
     @Before
     public void setUp() throws Exception {
@@ -36,6 +38,13 @@ public class NaiveRiskAnalysisTest {
         Field paymentRepositoryFiled = naiveRiskAnalysis.getClass().getDeclaredField("paymentRepository");
         paymentRepositoryFiled.setAccessible(true);
         paymentRepositoryFiled.set(naiveRiskAnalysis, paymentRepository);
+
+
+        paymentRequest = new PaymentRequest().setPaymentMethodId(UUID.randomUUID()).
+                                              setAmount(12.45d).
+                                              setCurrency(Moneta.HKD).
+                                              setPayeeId(UUID.randomUUID()).
+                                              setUserId(UUID.randomUUID());
     }
 
     @Test

@@ -32,40 +32,45 @@ public class PaymentRequest extends BaseRequest {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public PaymentRequest setAmount(Double amount) {
         this.amount = amount;
+        return this;
     }
 
     public Moneta getCurrency() {
         return currency;
     }
 
-    public void setCurrency(Moneta currency) {
+    public PaymentRequest setCurrency(Moneta currency) {
         this.currency = currency;
+        return this;
     }
 
     public UUID getUserId() {
         return userId;
     }
 
-    public void setUserId(UUID userId) {
+    public PaymentRequest setUserId(UUID userId) {
         this.userId = userId;
+        return this;
     }
 
     public UUID getPayeeId() {
         return payeeId;
     }
 
-    public void setPayeeId(UUID payeeId) {
+    public PaymentRequest setPayeeId(UUID payeeId) {
         this.payeeId = payeeId;
+        return this;
     }
 
     public UUID getPaymentMethodId() {
         return paymentMethodId;
     }
 
-    public void setPaymentMethodId(UUID paymentMethodId) {
+    public PaymentRequest setPaymentMethodId(UUID paymentMethodId) {
         this.paymentMethodId = paymentMethodId;
+        return this;
     }
 
     @Override

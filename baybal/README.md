@@ -15,15 +15,17 @@ Payment
 
 Send payment request
 ```
-curl 127.0.0.1:6767/payment -X POST -H "Content-Type: application/json" -d '{"amount":70.6,"currency":"CAD","userId":"076e2da2-959a-11e9-bbd0-0242ac110003","payeeId":"0770e6ec-959a-11e9-bbd0-0242ac110003","paymentMethodId":"0774c2d0-959a-11e9-bbd0-0242ac110003"}'
+curl 127.0.0.1:6767/payment -X POST -H "Content-Type: application/json" -d '{"amount":70.6,"currency":"CAD","userId":"7c27b553-97ee-11e9-a885-0242ac110003","payeeId":"7c29ae63-97ee-11e9-a885-0242ac110003","paymentMethodId":"7c2b72ee-97ee-11e9-a885-0242ac110003"}'
 ```
 
+Get all payments by userID
 ```
 curl 127.0.0.1:6767/payment/method/dddd
 ```
 
+Get payees
 ```
-curl 127.0.0.1:6767/payee
+curl -s 127.0.0.1:6767/payee | python -m json.tool
 ```
 
 ## How to install Kafka with Zookeeper
@@ -39,7 +41,7 @@ Next,
 ```
 docker run -p 2181:2181 -p 9092:9092 --env KAFKA_LISTENERS=LISTENER_BOB://localhost:9092,LISTENER_ALICE://172.17.0.1:9092 --name kafka -d -it arm/kafka:221 sleep 50000
 ```
-where 2181 is a Zookeeper port, 9092 - kafka bootstrap server port 
+where ```2181``` is a Zookeeper port, ```9092``` - kafka bootstrap server port 
 
 Start Zookeeper
 ```
@@ -54,14 +56,16 @@ Start Kafka
 
 Test Kafka
 ### Create a topic
+```
 echo $KAFKA_HOME
-
+```
+```
 $KAFKA_HOME/bin/zookeeper-server-start.sh config/zookeeper.properties
-
-
+```
+```
 $KAFKA_HOME/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic test
 /opt/kafka_2.12-2.2.1/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
-
+```
 This module serves as a Publisher, i.e. puts payment request into queue
 Fraud analytics - is a consumer
 

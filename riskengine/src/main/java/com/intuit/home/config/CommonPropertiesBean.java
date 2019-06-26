@@ -20,29 +20,74 @@ public class CommonPropertiesBean {
     private String kafkaGroupId;
 
 
+    @Value(value = "spring.datasource.url")
+    private String springDataSourceUrl;
+
+
+    @Value(value = "spring.datasource.username")
+    private String springDatasourceUsername;
+
+
+    @Value(value = "spring.datasource.password")
+    private String springDatasourcePassword;
+
+
+
     public String getBootstrapAddress() {
         return bootstrapAddress;
     }
 
-    public void setBootstrapAddress(String bootstrapAddress) {
+    public CommonPropertiesBean setBootstrapAddress(String bootstrapAddress) {
         this.bootstrapAddress = bootstrapAddress;
+        return this;
     }
 
     public String getKafkaTopicName() {
         return kafkaTopicName;
     }
 
-    public void setKafkaTopicName(String kafkaTopicName) {
+    public CommonPropertiesBean setKafkaTopicName(String kafkaTopicName) {
         this.kafkaTopicName = kafkaTopicName;
+        return this;
     }
 
     public String getKafkaGroupId() {
         return kafkaGroupId;
     }
 
-    public void setKafkaGroupId(String kafkaGroupId) {
+    public CommonPropertiesBean setKafkaGroupId(String kafkaGroupId) {
         this.kafkaGroupId = kafkaGroupId;
+        return this;
     }
+
+
+    public String getSpringDataSourceUrl() {
+        return springDataSourceUrl;
+    }
+
+    public CommonPropertiesBean setSpringDataSourceUrl(String springDataSourceUrl) {
+        this.springDataSourceUrl = springDataSourceUrl;
+        return this;
+    }
+
+    public String getSpringDatasourceUsername() {
+        return springDatasourceUsername;
+    }
+
+    public CommonPropertiesBean setSpringDatasourceUsername(String springDatasourceUsername) {
+        this.springDatasourceUsername = springDatasourceUsername;
+        return this;
+    }
+
+    public String getSpringDatasourcePassword() {
+        return springDatasourcePassword;
+    }
+
+    public CommonPropertiesBean setSpringDatasourcePassword(String springDatasourcePassword) {
+        this.springDatasourcePassword = springDatasourcePassword;
+        return this;
+    }
+
 
     @Override
     public String toString() {
@@ -50,6 +95,9 @@ public class CommonPropertiesBean {
         sb.append("{bootstrapAddress='").append(bootstrapAddress).append('\'');
         sb.append(", kafkaTopicName='").append(kafkaTopicName).append('\'');
         sb.append(", kafkaGroupId='").append(kafkaGroupId).append('\'');
+        sb.append(", springDataSourceUrl='").append(springDataSourceUrl).append('\'');
+        sb.append(", springDatasourceUsername='").append(springDatasourceUsername).append('\'');
+        sb.append(", springDatasourcePassword='").append(springDatasourcePassword).append('\'');
         sb.append('}');
         return sb.toString();
     }
