@@ -21,7 +21,7 @@ Run
 ---
 
 ```bash
-docker run -p 2181:2181 -p 9092 -p 8085:8085 --name kafka -it kafka
+ docker run -p 2181:2181 -p 9092:9092 --name kafka -d -it kafka:221
 ```
 
 ```bash
@@ -97,13 +97,17 @@ docker cp /home/oleg/Downloads/intuit/riskengine/src/main/resources/schema.sql d
 ```
 mysql -u root -p payment_system < schema.sql
 ```
-
+```
 select BIN_TO_UUID(payer_id), first_name, last_name, email from payer;
-
+```
+```
 select BIN_TO_UUID(payment_method_id), bank_account, BIN_TO_UUID(payer_id), payment_method_type_id from payment_method;
-
+```
+```
 select * from payment_method_type;
-
+```
+```
 select BIN_TO_UUID(payment_method_id), bank_account, BIN_TO_UUID(payer_id), payment_method_type_id from payment_method where payer_id=UUID_TO_BIN('6a6e193f-9270-11e9-b2fe-0242ac110003');
+```
 
 https://phauer.com/2016/uuids-hibernate-mysql/
