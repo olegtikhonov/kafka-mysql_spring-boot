@@ -14,7 +14,7 @@ in the same container. This means:
 * Zookeeper and Kafka are configured to work together out of the box
 
 ```
-docker build -t arm/kafka:221 .
+docker build -t kafka:221 .
 ```
 
 Run

@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.UUID;
 
@@ -31,14 +30,13 @@ public class PaymentServiceController {
 
     @RequestMapping(path = "/payment/method/{userID}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<PaymentMethod>> getPaymentMethodByUserID(@PathVariable(value="userID") String userID) {
-        logger.debug("Got user request payment methods.");
         return new ResponseEntity<>(paymentSystemDAO.getPaymentMethods(UUID.fromString(userID)), HttpStatus.OK);
     }
 
     @PostMapping(path = "/payment", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<String> makePayment(@RequestBody PaymentRequest paymentRequest) {
         paymentService.sendMessage(paymentRequest);
-        return new ResponseEntity<>("sss", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Payment request accepted for further processing. Stay tuned.", HttpStatus.ACCEPTED);
     }
 
     @GetMapping(path = "/payee")
